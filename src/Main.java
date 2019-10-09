@@ -31,9 +31,8 @@ public class Main {
         // Sorting
         for (int exp = 0; exp < len; exp++) {
 
-            clearBuckets(buckets);
-
             // Partitioning
+            clearBuckets(buckets);
             for (int e : array) {
                 buckets[hash(e, exp)].add(e);
             }
@@ -45,10 +44,7 @@ public class Main {
                     array[i++] = e;
                 }
             }
-            System.out.println("Array nach Exp " + exp + ": " + Arrays.toString(array));
         }
-
-
     }
 
     private static int hash(int num, int exp) {
