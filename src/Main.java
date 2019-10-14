@@ -29,7 +29,7 @@ public class Main {
 //        Radixsort.intLSD(sequence2);
 //        System.out.println("Arrays.toString(sequence2) = " + Arrays.toString(sequence2));
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("german.dic"), StandardCharsets.UTF_8));
+        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("german.dic"), StandardCharsets.ISO_8859_1));
         List<String> wordList = new ArrayList<>();
         for (String s = br.readLine(); s != null; s = br.readLine()) {
             wordList.add(s);

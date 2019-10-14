@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="43d5aa6a-cda5-47ec-8bb2-e804109f2faf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/radixsort/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/radixsort/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/radixsort/Radixsort.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/radixsort/Radixsort.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Radixsort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Radixsort.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -123,7 +121,7 @@
       <workItem from="1570955017669" duration="3279000" />
       <workItem from="1571027495677" duration="293000" />
       <workItem from="1571032986835" duration="1090000" />
-      <workItem from="1571059332487" duration="248000" />
+      <workItem from="1571059332487" duration="504000" />
     </task>
     <task id="LOCAL-00001" summary="Bucketsort">
       <created>1570629187241</created>
@@ -153,7 +151,14 @@
       <option name="project" value="LOCAL" />
       <updated>1570957828364</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="- fixed issue with String Radixsort">
+      <created>1571059691189</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1571059691189</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,7 +181,8 @@
     <MESSAGE value="Bucketsort" />
     <MESSAGE value="Radixsort" />
     <MESSAGE value="- outsourced Radixsort to own class&#10;- TODO: Input file charset&#10;- TODO: Radixsort with Strings doesn't work (prob sth. with Hash)" />
-    <option name="LAST_COMMIT_MESSAGE" value="- outsourced Radixsort to own class&#10;- TODO: Input file charset&#10;- TODO: Radixsort with Strings doesn't work (prob sth. with Hash)" />
+    <MESSAGE value="- fixed issue with String Radixsort" />
+    <option name="LAST_COMMIT_MESSAGE" value="- fixed issue with String Radixsort" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
