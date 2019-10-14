@@ -1,4 +1,5 @@
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -28,7 +29,7 @@ public class Main {
 //        Radixsort.intLSD(sequence2);
 //        System.out.println("Arrays.toString(sequence2) = " + Arrays.toString(sequence2));
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("german.dic")));
+        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("german.dic"), StandardCharsets.UTF_8));
         List<String> wordList = new ArrayList<>();
         for (String s = br.readLine(); s != null; s = br.readLine()) {
             wordList.add(s);

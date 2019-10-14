@@ -74,26 +74,25 @@ public class Radixsort {
     private static int strHash(String str, int exp) {
         int pos = str.length() - 1 - exp;
         if (pos < 0) {
-            return 0;
+            pos = 0;
+        }
+        char c = str.charAt(pos);
+        if (c >= '0' && c <= '9') {
+            return c - '0';
+        } else if (c >= 'A' && c <= 'Z') {
+            return c - 'A' + 10;
+        } else if (c >= 'a' && c <= 'z') {
+            return c - 'a' + 10;
+        } else if (c == 'ä' || c == 'Ä') {
+            return 36;
+        } else if (c == 'ö' || c == 'Ö') {
+            return 37;
+        } else if (c == 'ü' || c == 'Ü') {
+            return 38;
+        } else if (c == 'ß') {
+            return 39;
         } else {
-            char c = str.charAt(pos);
-            if (c >= '0' && c <= '9') {
-                return c - '0';
-            } else if (c >= 'A' && c <= 'Z') {
-                return c - 'A' + 10;
-            } else if (c >= 'a' && c <= 'z') {
-                return c - 'a' + 10;
-            } else if (c == 'ä' || c == 'Ä') {
-                return 36;
-            } else if (c == 'ö' || c == 'Ö') {
-                return 37;
-            } else if (c == 'ü' || c == 'Ü') {
-                return 38;
-            } else if (c == 'ß') {
-                return 39;
-            } else {
-                return 0;
-            }
+            return 0;
         }
     }
 
