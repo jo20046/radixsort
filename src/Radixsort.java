@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Radixsort {
@@ -6,7 +7,10 @@ public class Radixsort {
     private static final int KEYS_INT = 10;
     private static final int KEYS_STR = 40;
 
-    static void intLSD(int[] seq) {
+
+    // - - - - - - int LSD - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    static void LSD(int[] seq) {
 
         // Determine maximum element length
         int len = getMaxLength(seq);
@@ -23,7 +27,7 @@ public class Radixsort {
             // Partitioning
             clearBuckets(buckets);
             for (int e : seq) {
-                buckets[intHash(e, exp)].add(e);
+                buckets[hashLSD(e, exp)].add(e);
             }
 
             // Collecting
@@ -36,65 +40,64 @@ public class Radixsort {
         }
     }
 
-    static void strLSD(String[] seq) {
+    private static int hashLSD(int num, int exp) {
+        return (num / (int) Math.pow(10, exp)) % 10;
+    }
 
-        // Determine maximum element length
-        int len = getMaxLength(seq);
 
-        //Init Buckets
-        List<String>[] buckets = new List[KEYS_STR];
-        for (int i = 0; i < KEYS_STR; i++) {
-            buckets[i] = new ArrayList<>();
-        }
+    // - - - - - - int MSD - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        // Sorting
-        for (int exp = 0; exp < len; exp++) {
+    static void MSD(int[] seq) {
+        intMSD_R(seq, 0, getMaxLength(seq));
+    }
+
+    private static void intMSD_R(int[] seq, int exp, int maxLen) {
+
+        if (seq.length >= 2) {  // condition for recursion
+            // Init Buckets
+            List<Integer>[] buckets = new List[KEYS_INT];
+            for (int i = 0; i < KEYS_INT; i++) {
+                buckets[i] = new ArrayList<>();
+            }
 
             // Partitioning
-            clearBuckets(buckets);
-            for (String s : seq) {
-//                buckets[intHash(e, exp)].add(e);
-                buckets[strHash(s, exp)].add(s);
+            for (int e : seq) {
+                buckets[hashMSD(e, exp, maxLen)].add(e);
+            }
+
+            // Sort each bucket recursively
+            for (List<Integer> bucket : buckets) {
+
+                int[] bucketContent = bucket.stream().mapToInt(Integer::intValue).toArray();
+                intMSD_R(bucketContent, exp + 1, maxLen); // recursive call
+
+                bucket.clear(); // clear bucket and refill with sorted elements
+                for (int i : bucketContent) {
+                    bucket.add(i);
+                }
             }
 
             // Collecting
             int i = 0;
-            for (List<String> bucket : buckets) {
-                for (String str : bucket) {
-                    seq[i++] = str;
+            for (List<Integer> bucket : buckets) {
+                for (Integer e : bucket) {
+                    seq[i++] = e;
                 }
             }
         }
     }
 
-    private static int intHash(int num, int exp) {
+    private static int hashMSD(int num, int exp, int maxLen) {
+        int len = getLength(num);
+        exp = Math.max(maxLen - exp - 1, 0);
+        if (len < maxLen && exp >= len) {
+            return 0;
+        }
         return (num / (int) Math.pow(10, exp)) % 10;
     }
 
-    private static int strHash(String str, int exp) {
-        int pos = str.length() - 1 - exp;
-        if (pos < 0) {
-            pos = 0;
-        }
-        char c = str.charAt(pos);
-        if (c >= '0' && c <= '9') {
-            return c - '0';
-        } else if (c >= 'A' && c <= 'Z') {
-            return c - 'A' + 10;
-        } else if (c >= 'a' && c <= 'z') {
-            return c - 'a' + 10;
-        } else if (c == 'ä' || c == 'Ä') {
-            return 36;
-        } else if (c == 'ö' || c == 'Ö') {
-            return 37;
-        } else if (c == 'ü' || c == 'Ü') {
-            return 38;
-        } else if (c == 'ß') {
-            return 39;
-        } else {
-            return 0;
-        }
-    }
+
+    //  - - - - - - Helper - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     private static void clearBuckets(List[] buckets) {
         for (List bucket : buckets) {

@@ -1,10 +1,8 @@
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
 
@@ -21,29 +19,38 @@ public class Main {
 //        radixsortLSD(sequence, 3, 10);
 //        System.out.println("Sortiert: " + Arrays.toString(sequence));
 
-//        int[] sequence1 = {124, 523, 483, 128, 923, 584, 123};
-//        int[] sequence2 = {47, 85, 10, 45, 16, 34, 67, 80, 34, 4, 0, 99};
+        int[] sequence1 = {124, 523, 483, 128, 923, 584, 123};
+        int[] sequence2 = {47, 85, 10, 45, 456, 16, 34, 67, 80, 0, 4, 99};
+        int[] sequence3 = {47, 42, 190};
 //
 //        Radixsort.intLSD(sequence1);
 //        System.out.println("Arrays.toString(sequence1) = " + Arrays.toString(sequence1));
 //        Radixsort.intLSD(sequence2);
 //        System.out.println("Arrays.toString(sequence2) = " + Arrays.toString(sequence2));
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("german.dic"), StandardCharsets.ISO_8859_1));
-        List<String> wordList = new ArrayList<>();
-        for (String s = br.readLine(); s != null; s = br.readLine()) {
-            wordList.add(s);
-        }
-
-        String[] sequence2 = new String[10];
-        int len = wordList.size();
-        for (int i = 0; i < 10; i++) {
-            sequence2[i] = wordList.get(ThreadLocalRandom.current().nextInt(0, len));
-        }
-
+        Radixsort.MSD(sequence1);
+        System.out.println("Arrays.toString(sequence1) = " + Arrays.toString(sequence1));
+        Radixsort.MSD(sequence2);
         System.out.println("Arrays.toString(sequence2) = " + Arrays.toString(sequence2));
-        Radixsort.strLSD(sequence2);
-        System.out.println("Arrays.toString(sequence2) = " + Arrays.toString(sequence2));
+//        Radixsort.MSD(sequence3);
+//        System.out.println("Arrays.toString(sequence3) = " + Arrays.toString(sequence3));
+
+//        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("german.dic"), StandardCharsets.ISO_8859_1));
+//        List<String> wordList = new ArrayList<>();
+//        for (String s = br.readLine(); s != null; s = br.readLine()) {
+//            wordList.add(s);
+//        }
+//
+//        String[] sequence3 = new String[10];
+//        int len = wordList.size();
+//        for (int i = 0; i < 10; i++) {
+//            sequence3[i] = wordList.get(ThreadLocalRandom.current().nextInt(0, len));
+//        }
+//
+//        System.out.println("Arrays.toString(sequence2) = " + Arrays.toString(sequence3));
+//        Radixsort.strLSD(sequence3);
+//        System.out.println("Arrays.toString(sequence2) = " + Arrays.toString(sequence3));
+
 
     }
 
