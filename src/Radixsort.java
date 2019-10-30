@@ -47,12 +47,12 @@ static void LSD(int[] seq) {
     // - - - - - - int MSD - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     static void MSD(int[] seq) {
-        intMSD_R(seq, 0, getMaxLength(seq));
+        MSD_R(seq, 0, getMaxLength(seq));
     }
 
-    private static void intMSD_R(int[] seq, int exp, int maxLen) {
+    private static void MSD_R(int[] seq, int exp, int maxLen) {
 
-        if (seq.length >= 2) {  // condition for recursion
+        if (seq.length >= 2 && !allElementsAreEqual(seq)) {  // condition for recursion
 
             // Init Containers
             List<Integer>[] containers = new List[KEYS_INT];
@@ -69,7 +69,7 @@ static void LSD(int[] seq) {
             for (List<Integer> container : containers) {
 
                 int[] containerContent = container.stream().mapToInt(Integer::intValue).toArray();
-                intMSD_R(containerContent, exp + 1, maxLen); // recursive call
+                MSD_R(containerContent, exp + 1, maxLen); // recursive call
 
                 container.clear(); // clear container and refill with sorted elements
                 for (int i : containerContent) {
@@ -117,12 +117,17 @@ static void LSD(int[] seq) {
         }
     }
 
-    private static int getMaxLength(String[] seq) {
-        int res = 0;
-        for (String s : seq) {
-            res = Math.max(res, s.length());
+    private static boolean allElementsAreEqual(int[] seq) {
+        if (seq.length == 0) {
+            return false;
         }
-        return res;
+        int tmp = seq[0];
+        for (int i : seq) {
+            if (i != tmp) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private static int getMaxLength(int[] seq) {
