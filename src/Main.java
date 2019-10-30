@@ -22,11 +22,11 @@ public class Main {
         int[] sequence1 = {124, 523, 483, 128, 923, 584, 123};
         int[] sequence2 = {47, 85, 10, 45, 456, 16, 34, 67, 80, 0, 4, 99};
         int[] sequence3 = {47, 42, 190};
-//
-//        Radixsort.intLSD(sequence1);
-//        System.out.println("Arrays.toString(sequence1) = " + Arrays.toString(sequence1));
-//        Radixsort.intLSD(sequence2);
-//        System.out.println("Arrays.toString(sequence2) = " + Arrays.toString(sequence2));
+
+        Radixsort.LSD(sequence1);
+        System.out.println("Arrays.toString(sequence1) = " + Arrays.toString(sequence1));
+        Radixsort.LSD(sequence2);
+        System.out.println("Arrays.toString(sequence2) = " + Arrays.toString(sequence2));
 
         Radixsort.MSD(sequence1);
         System.out.println("Arrays.toString(sequence1) = " + Arrays.toString(sequence1));

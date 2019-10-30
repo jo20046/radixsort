@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Radixsort {
@@ -10,35 +9,35 @@ public class Radixsort {
 
     // - - - - - - int LSD - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    static void LSD(int[] seq) {
+static void LSD(int[] seq) {
 
-        // Determine maximum element length
-        int len = getMaxLength(seq);
+    // Determine maximum element length
+    int len = getMaxLength(seq);
 
-        //Init Buckets
-        List<Integer>[] buckets = new List[KEYS_INT];
-        for (int i = 0; i < KEYS_INT; i++) {
-            buckets[i] = new ArrayList<>();
+    //Init Containers
+    List<Integer>[] containers = new List[KEYS_INT];
+    for (int i = 0; i < KEYS_INT; i++) {
+        containers[i] = new ArrayList<>();
+    }
+
+    // Sorting
+    for (int exp = 0; exp < len; exp++) {
+
+        // Partitioning
+        clearContainers(containers);
+        for (int e : seq) {
+            containers[hashLSD(e, exp)].add(e);
         }
 
-        // Sorting
-        for (int exp = 0; exp < len; exp++) {
-
-            // Partitioning
-            clearBuckets(buckets);
-            for (int e : seq) {
-                buckets[hashLSD(e, exp)].add(e);
-            }
-
-            // Collecting
-            int i = 0;
-            for (List<Integer> bucket : buckets) {
-                for (Integer e : bucket) {
-                    seq[i++] = e;
-                }
+        // Collecting
+        int i = 0;
+        for (List<Integer> container : containers) {
+            for (Integer e : container) {
+                seq[i++] = e;
             }
         }
     }
+}
 
     private static int hashLSD(int num, int exp) {
         return (num / (int) Math.pow(10, exp)) % 10;
@@ -54,39 +53,52 @@ public class Radixsort {
     private static void intMSD_R(int[] seq, int exp, int maxLen) {
 
         if (seq.length >= 2) {  // condition for recursion
-            // Init Buckets
-            List<Integer>[] buckets = new List[KEYS_INT];
+
+            // Init Containers
+            List<Integer>[] containers = new List[KEYS_INT];
             for (int i = 0; i < KEYS_INT; i++) {
-                buckets[i] = new ArrayList<>();
+                containers[i] = new ArrayList<>();
             }
 
             // Partitioning
             for (int e : seq) {
-                buckets[hashMSD(e, exp, maxLen)].add(e);
+                containers[hashMSD(e, exp, maxLen)].add(e);
             }
 
             // Sort each bucket recursively
-            for (List<Integer> bucket : buckets) {
+            for (List<Integer> container : containers) {
 
-                int[] bucketContent = bucket.stream().mapToInt(Integer::intValue).toArray();
-                intMSD_R(bucketContent, exp + 1, maxLen); // recursive call
+                int[] containerContent = container.stream().mapToInt(Integer::intValue).toArray();
+                intMSD_R(containerContent, exp + 1, maxLen); // recursive call
 
-                bucket.clear(); // clear bucket and refill with sorted elements
-                for (int i : bucketContent) {
-                    bucket.add(i);
+                container.clear(); // clear container and refill with sorted elements
+                for (int i : containerContent) {
+                    container.add(i);
                 }
             }
 
             // Collecting
             int i = 0;
-            for (List<Integer> bucket : buckets) {
-                for (Integer e : bucket) {
+            for (List<Integer> container : containers) {
+                for (Integer e : container) {
                     seq[i++] = e;
                 }
             }
         }
     }
 
+    /*
+    exp = Math.max(maxLen - exp - 1, 0);
+    "Umdrehen" des Exponenten. exp ist einfach die mitlaufende Variable für die Rekursionstiefe. Da aber beim MSD begonnen
+    wird, muss der Exponent für die Hashfunktion umgekehrt werden. Aus exp = 0 wird exp = maxLen ( -1 weil der Exponent
+    bei 0 anfängt zu zählen, die Länge aber bei 1
+
+    if (len < maxLen && exp >= len) {
+    Falls ein Element weniger Stellen als das größte Element hat, muss für dieses Element in den ersten Durchläufen 0
+    zurückgegeben werden (z.B. Zahl 47 und das größte Element ist 3-stellig; 47 muss im ersten Umlauf in den 0-Container,
+    nicht in den 4-Container
+
+     */
     private static int hashMSD(int num, int exp, int maxLen) {
         int len = getLength(num);
         exp = Math.max(maxLen - exp - 1, 0);
@@ -99,9 +111,9 @@ public class Radixsort {
 
     //  - - - - - - Helper - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    private static void clearBuckets(List[] buckets) {
-        for (List bucket : buckets) {
-            bucket.clear();
+    private static void clearContainers(List[] containers) {
+        for (List container : containers) {
+            container.clear();
         }
     }
 
