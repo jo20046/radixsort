@@ -23,13 +23,13 @@ public class Main {
         int[] sequence2 = {47, 85, 10, 45, 456, 16, 16, 34, 67, 80, 0, 4, 99};
         int[] sequence3 = {42, 42, 190};
 
-//        Radixsort.LSD(sequence1);
-//        System.out.println("Arrays.toString(sequence1) = " + Arrays.toString(sequence1));
-//        Radixsort.LSD(sequence2);
-//        System.out.println("Arrays.toString(sequence2) = " + Arrays.toString(sequence2));
+        Radixsort.LSD(sequence1);
+        System.out.println("Arrays.toString(sequence1) = " + Arrays.toString(sequence1));
+        Radixsort.LSD(sequence2);
+        System.out.println("Arrays.toString(sequence2) = " + Arrays.toString(sequence2));
 
-//        Radixsort.MSD(sequence1);
-//        System.out.println("Arrays.toString(sequence1) = " + Arrays.toString(sequence1));
+        Radixsort.MSD(sequence1);
+        System.out.println("Arrays.toString(sequence1) = " + Arrays.toString(sequence1));
         Radixsort.MSD(sequence2);
         System.out.println("Arrays.toString(sequence2) = " + Arrays.toString(sequence2));
         Radixsort.MSD(sequence3);

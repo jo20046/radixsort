@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="43d5aa6a-cda5-47ec-8bb2-e804109f2faf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/radixsort/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/radixsort/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/radixsort/Radixsort.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/radixsort/Radixsort.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Radixsort.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Radixsort.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -129,7 +130,7 @@
       <workItem from="1572240786951" duration="253000" />
       <workItem from="1572259509660" duration="325000" />
       <workItem from="1572328163417" duration="6384000" />
-      <workItem from="1572418477878" duration="896000" />
+      <workItem from="1572418477878" duration="1999000" />
     </task>
     <task id="LOCAL-00001" summary="Bucketsort">
       <created>1570629187241</created>
@@ -187,7 +188,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572418391992</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="fixed endless loop error for MSD when there are 2 or more instances of the same element in the array">
+      <created>1572420638239</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1572420638239</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -214,7 +222,8 @@
     <MESSAGE value="- fixed charset issue" />
     <MESSAGE value="- no more string sort&#10;- intMSD works now" />
     <MESSAGE value="- rename &quot;Buckets&quot; to &quot;Containers&quot; for Radixsort&#10;- added comment to MSD Hash" />
-    <option name="LAST_COMMIT_MESSAGE" value="- rename &quot;Buckets&quot; to &quot;Containers&quot; for Radixsort&#10;- added comment to MSD Hash" />
+    <MESSAGE value="fixed endless loop error for MSD when there are 2 or more instances of the same element in the array" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed endless loop error for MSD when there are 2 or more instances of the same element in the array" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -226,7 +235,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Radixsort.java</url>
-          <line>102</line>
+          <line>129</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
